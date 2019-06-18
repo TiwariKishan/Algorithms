@@ -1,0 +1,71 @@
+#include<bits/stdc++.h>
+#pragma GCC target ("avx2")
+#pragma GCC optimization ("O3")
+#pragma GCC optimization ("unroll-loops")
+using namespace std;
+#define ll long long
+#define f(i,a,b) for(ll i=a;i<b;i++)
+#define mod 1000000007
+#define fi first
+#define se second
+#define pa pair <ll,ll>
+#define mp make_pair
+#define pb push_back
+#define ve vector<ll>
+#define vep vector< pa >
+#define c(t) cout<<t<<"\n"
+using namespace std;
+ll a[10001];
+ll num(ll n)
+{   ll i=1;
+    ll a[n];
+    a[0]=1;
+    ll i2=0,i3=0,i5=0,m2=2,m3=3,m5=5;
+    while(i<n)
+    {
+        a[i]=min(m2,min(m3,m5));
+        if(a[i]==m2)
+        {
+            i2++;
+            m2=a[i2]*2;
+        }
+        if(a[i]==m3)
+        {
+            i3++;
+            m3=a[i3]*3;
+        }
+        if(a[i]==m5)
+        {
+            i5++;
+            m5=a[i5]*5;
+        }
+        i++;
+    }
+    return a[n-1];
+}
+void solve()
+{  ll n;
+cin>>n;
+ll c;
+if(a[n-1]!=0)
+    c=a[n-1];
+else
+c=num(n);
+c(c);
+}
+int main()
+{
+    ios::sync_with_stdio(true);
+    cin.tie(0);
+    cout.tie(0);
+    ll t;
+    cin>>t;
+    f(i,0,10001)
+    a[i]=0;
+    while(t--)
+    {
+
+        solve();
+    }
+return 0;
+}
