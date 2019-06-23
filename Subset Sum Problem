@@ -1,0 +1,70 @@
+/*
+  Author - KISHAN TIWARI
+  Dream bigger. Do bigger.
+  Wake up with determination. Go to bed with satisfaction.
+*/
+//Sometimes later becomes never. Do it now.
+#include<bits/stdc++.h>
+using namespace std;
+#define ll           long long
+#define f(i,a,b)     for(ll i=a;i<b;i++)
+#define mod          1000000007
+#define fi           first
+#define se           second
+#define pa           pair <ll,ll>
+#define mp           make_pair
+#define pb           push_back
+#define ve           vector<ll>
+#define vep          vector< pa >
+#define all(a)       a.begin(), a.end()
+#define sz(x)        (ll)x.size()
+#define c(t)         cout<<t<<"\n"
+using namespace std;
+bool bdp(ll a[],ll n,ll s)
+{  ll sum=s;
+   bool b[n+1][sum+1];
+   f(i,0,n+1)
+   b[i][0]=1;
+   f(i,1,sum+1)
+   b[0][i]=0;
+   f(i,1,n+1)
+   {
+       f(j,1,sum+1)
+       {
+           b[i][j]=(j<a[i]) ? b[i-1][j]: b[i-1][j]||b[i-1][j-a[i]];
+       }
+   }
+   return b[n][sum];
+}
+void solve()
+{  ll n,s=0;
+cin>>n;
+ll a[n];
+f(i,0,n)
+{cin>>a[i];
+s+=a[i];
+}
+if(s%2!=0)
+    cout<<"NO\n";
+else
+{   s=s/2;
+    (bdp(a,n,s)==true) ? cout<<"YES\n" :  cout<<"NO\n";
+}
+
+}
+int main()
+{
+    ios::sync_with_stdio(true);
+   //freopen ("input.txt","r",stdin);
+   //freopen ("output.txt","w",stdout);
+    cin.tie(0);
+    cout.tie(0);
+    ll t;
+    cin>>t;
+    while(t--)
+    {
+
+        solve();
+    }
+return 0;
+}
