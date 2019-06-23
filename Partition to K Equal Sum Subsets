@@ -1,0 +1,78 @@
+/*
+  Author - KISHAN TIWARI
+  Dream bigger. Do bigger.
+  Wake up with determination. Go to bed with satisfaction.
+*/
+//Sometimes later becomes never. Do it now.
+#include<bits/stdc++.h>
+using namespace std;
+#define ll           long long
+#define f(i,a,b)     for(ll i=a;i<b;i++)
+#define mod          1000000007
+#define fi           first
+#define se           second
+#define pa           pair <ll,ll>
+#define mp           make_pair
+#define pb           push_back
+#define ve           vector<ll>
+#define vep          vector< pa >
+#define all(a)       a.begin(), a.end()
+#define sz(x)        (ll)x.size()
+#define c(t)         cout<<t<<"\n"
+using namespace std;
+class Solution {
+public:
+    bool canPartitionKSubsets(vector<int>& nums, int k) {
+     int sum=0;
+        bool used[nums.size()];
+        for(int i=0;i<nums.size();i++)
+        {  used[i]=false;
+           sum+=nums[i];
+        }
+
+      if(sum%k!=0||k<=0||k>nums.size())
+            return false;
+
+            return cn(nums,k,used,0,0,sum/k);
+
+
+    }
+    bool cn(vector<int>& nums, int k,bool used[],int st,int si,int to)
+    {
+        if(k==1)
+            return true;
+        if(si==to)
+            {
+               return  cn(nums,k-1,used,0,0,to);}
+        for(int i=st;i<nums.size();i++)
+        {  if(!used[i]&&si+nums[i]<=to)
+          {used[i]=true;
+           if(cn(nums,k,used,i+1,si+nums[i],to))
+               {return 1;}
+
+         used[i]=false;
+         }
+        }
+        return false;
+    }
+};
+int main()
+{  int n;
+cin>>n;
+vector<int> v;
+f(i,0,n)
+{
+ll x;
+cin>>x;
+v.pb(x);}
+int k;
+cin>>k;
+Solution m;
+
+if(m.canPartitionKSubsets(v,k)==1)
+    c(1);
+else
+    c(0);
+return 0;
+}
+
