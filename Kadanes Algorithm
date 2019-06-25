@@ -1,0 +1,59 @@
+/*
+  Author - KISHAN TIWARI
+  Dream bigger. Do bigger.
+  Wake up with determination. Go to bed with satisfaction.
+*/
+//Sometimes later becomes never. Do it now.
+#include<bits/stdc++.h>
+using namespace std;
+#define ll           long long
+#define f(i,a,b)     for(ll i=a;i<b;i++)
+#define mod          1000000007
+#define fi           first
+#define se           second
+#define pa           pair <ll,ll>
+#define mp           make_pair
+#define pb           push_back
+#define ve           vector<ll>
+#define vep          vector< pa >
+#define all(a)       a.begin(), a.end()
+#define sz(x)        (ll)x.size()
+#define c(t)         cout<<t<<"\n"
+#define ovr          (1LL << 32)-1
+ll gcd(ll a,ll b)    {return b==0?a:gcd(b,a%b);}
+using namespace std;
+void solve()
+{  ll n,l=0,r=0,m=-ovr;
+   cin>>n;
+   ll a[n];
+   f(i,0,n)
+   {
+       cin>>a[i];
+       m=max(m,a[i]);
+       l+=a[i];
+       if(l<0)
+        l=0;
+       if(r<l)
+        r=l;
+   }
+   if(r==0)
+    r=m;
+   c(r);
+}
+
+int main()
+{
+    ios::sync_with_stdio(true);
+   //freopen ("input.txt","r",stdin);
+   //freopen ("output.txt","w",stdout);
+    cin.tie(0);
+    cout.tie(0);
+    ll t;
+    cin>>t;
+    while(t--)
+    {
+
+        solve();
+    }
+return 0;
+}
